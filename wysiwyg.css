@@ -1,0 +1,29 @@
+* {
+	margin: 10px;
+}
+img {
+	width: 200px;
+	height: 200px;
+}
+#userInput {
+	border: black solid 1px;
+}
+.people_container {
+	height: 500px;
+	width: 500px;
+	border: 2px solid black;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+.border {
+	border: 2px dotted red;
+}
+
+.people_container:nth-child(odd) {
+	background-color: lightblue;
+}
+
+.people_container:nth-child(even) {
+	background-color: lightyellow;
+}
