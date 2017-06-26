@@ -60,18 +60,20 @@ for (; counter < people.length; counter++) {
   	</div>`
 }
 
+let selectOne = document.getElementsByClassName("people_container border")
 let containerEl = document.getElementsByClassName("people_container");
 let userInput = document.getElementById("userInput");
 let bio = document.getElementById("bio");
-	
 
-	for (let i = 0; i < containerEl.length; i++) {
-		containerEl[i].addEventListener("click", function() {
-				containerEl[i].classList.toggle("border")
-				userInput.focus();
-				enterPress()
-		})
-	}
+for (let i = 0; i < containerEl.length; i++) {
+	containerEl[i].addEventListener("click", function() {
+			containerEl[i].classList.toggle("border")
+			userInput.focus();
+			if(selectOne){
+			enterPress()
+		}
+	})
+}
 
 function enterPress(){
 	userInput.addEventListener("keyup", function() {
@@ -84,6 +86,8 @@ function enterPress(){
 
 function replaceBio(){
 	for (let i = 0; i < containerEl.length; i++) {
-		containerEl[i].querySelector("#bio").innerHTML = userInput.value;
+		if(selectOne){
+		selectOne[0].querySelector("#bio").innerHTML = userInput.value;
+		}
 	}
 }
