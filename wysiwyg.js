@@ -52,7 +52,7 @@ for (; counter < people.length; counter++) {
   			<h2>${people[counter].name}</h2>
   		</header>
   		<section id="section">
-  			<p>${people[counter].bio}</p>
+  			<p id="bio">${people[counter].bio}</p>
   			<img src=${people[counter].image}>
   		</section>
   		<footer id="footer">
@@ -62,16 +62,28 @@ for (; counter < people.length; counter++) {
 
 let containerEl = document.getElementsByClassName("people_container");
 let userInput = document.getElementById("userInput");
-		
+let bio = document.getElementById("bio");
+	
 
-for (let i = 0; i < containerEl.length; i++) {
-	containerEl[i].addEventListener("click", function() {
-			containerEl[i].classList.toggle("border")
-	})
-}
+	for (let i = 0; i < containerEl.length; i++) {
+		containerEl[i].addEventListener("click", function() {
+				containerEl[i].classList.toggle("border")
+				userInput.focus();
+				enterPress()
+		})
+	}
 
+function enterPress(){
 	userInput.addEventListener("keyup", function() {
 		if (event.key === "Enter") {
 			userInput.value = "";
 		}
+		replaceBio()
 	})
+}
+
+function replaceBio(){
+	for (let i = 0; i < containerEl.length; i++) {
+		containerEl[i].querySelector("#bio").innerHTML = userInput.value;
+	}
+}
